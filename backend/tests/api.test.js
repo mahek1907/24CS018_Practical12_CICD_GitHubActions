@@ -80,7 +80,8 @@ describe("Task Management API - CI/CD Automated Test Suite", () => {
                 .get("/tasks")
                 .set("Authorization", `Bearer ${validToken}`);
 
-            expect(res.statusCode).toBe(200);
+            // Deliberate test assertion failure for Practical 12 demonstration
+            expect(res.statusCode).toBe(500);
             expect(Array.isArray(res.body)).toBe(true);
             expect(res.body.length).toBe(1);
             expect(res.body[0].title).toBe("Setup CI/CD Pipeline");
