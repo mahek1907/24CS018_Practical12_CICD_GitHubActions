@@ -56,3 +56,11 @@ jobs:
       - name: Run backend automated tests
         working-directory: backend
         run: npm test
+
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm install
+
+      - name: Build frontend application
+        working-directory: frontend
+        run: npm run build
