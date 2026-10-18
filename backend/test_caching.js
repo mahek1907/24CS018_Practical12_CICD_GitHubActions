@@ -156,7 +156,7 @@ async function runTests() {
             JSON.stringify(stats3));
 
         // Test 4: Cache Invalidation on POST /tasks
-        const newRes = await (await fetch(`${BASE_URL}/tasks`, {
+        const _newRes = await (await fetch(`${BASE_URL}/tasks`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

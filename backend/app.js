@@ -1,7 +1,6 @@
 require("dotenv").config();
 
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
 
 const logger = require("./middleware/logger");
@@ -14,8 +13,10 @@ const connectDB = require("./config/db");
 // Register event listeners exactly once on startup before any request triggers an event
 registerListeners();
 
-// Connect to MongoDB
-connectDB();
+// Connect to MongoDB if not running in automated test mode
+if (process.env.NODE_ENV !== "test") {
+    connectDB();
+}
 
 const app = express();
 
@@ -31,7 +32,7 @@ app.use(logger);
 // Welcome / Health check route for browser visits to http://localhost:5000/
 app.get("/", (req, res) => {
     res.status(200).json({
-        message: "Practical 10: Asynchronous Processing with Event-Driven Architecture API is running",
+        message: "Practical 12: CI/CD Pipeline with GitHub Actions API is running",
         studentId: "24CS018",
         status: "active",
         endpoints: {

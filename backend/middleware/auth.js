@@ -24,7 +24,8 @@ function auth(req, res, next) {
     }
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const secret = process.env.JWT_SECRET || "p7_task_manager_secure_jwt_secret_key_2026_charusat";
+        const decoded = jwt.verify(token, secret);
         req.user = decoded;
         next();
     } catch (error) {
